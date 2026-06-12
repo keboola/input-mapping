@@ -453,6 +453,38 @@ class TableConfigurationTest extends TestCase
                     'keep_internal_timestamp_column' => true,
                 ],
             ],
+            'LoadTypeLowerCaseView' => [
+                [
+                    'source' => 'in.c-main.test',
+                    'load_type' => 'view',
+                ],
+                [
+                    'source' => 'in.c-main.test',
+                    'columns' => [],
+                    'where_values' => [],
+                    'where_operator' => 'eq',
+                    'column_types' => [],
+                    'overwrite' => false,
+                    'load_type' => 'VIEW',
+                    'keep_internal_timestamp_column' => true,
+                ],
+            ],
+            'LoadTypeMixedCaseClone' => [
+                [
+                    'source' => 'in.c-main.test',
+                    'load_type' => 'Clone',
+                ],
+                [
+                    'source' => 'in.c-main.test',
+                    'columns' => [],
+                    'where_values' => [],
+                    'where_operator' => 'eq',
+                    'column_types' => [],
+                    'overwrite' => false,
+                    'load_type' => 'CLONE',
+                    'keep_internal_timestamp_column' => true,
+                ],
+            ],
             'LoadTypeAuto' => [
                 [
                     'source' => 'in.c-main.test',

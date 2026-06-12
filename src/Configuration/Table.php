@@ -77,6 +77,15 @@ class Table extends Configuration
                 // emitted in the parsed output. No default so it cannot be re-added after being unset.
                 ->booleanNode('use_view')->end()
                 ->enumNode('load_type')
+                    // Accept any case (e.g. "view"/"View"/"VIEW"); callers are not
+                    // consistent about it. Upper-case before the enum check so the
+                    // permissible-values validation and the parsed output stay canonical.
+                    ->beforeNormalization()
+                        ->ifString()
+                        ->then(function ($v) {
+                            return strtoupper($v);
+                        })
+                    ->end()
                     ->values(['COPY', 'CLONE', 'VIEW', 'AUTO'])
                 ->end()
                 ->booleanNode('keep_internal_timestamp_column')->defaultValue(true)->end()
