@@ -96,8 +96,7 @@ abstract class AbstractStrategy implements StrategyInterface
                         $overwrite,
                     );
                 } catch (ClientException $e) {
-                    // Storage API client errors (e.g. the file is missing or has expired) are caused
-                    // by the user's input, not by the platform, so surface them as a user error.
+                    // a missing or expired file is a user input problem, not a platform error
                     throw new InvalidInputException(
                         sprintf(
                             'Failed to download file %s (%s): %s',
